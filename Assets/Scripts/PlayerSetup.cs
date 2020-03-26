@@ -5,6 +5,8 @@ public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
 
+    Camera sceneCamera;
+
     void Start()
     {
         // check to see if we're on the network.
@@ -15,6 +17,25 @@ public class PlayerSetup : NetworkBehaviour
             {
                 componentsToDisable[i].enabled = false;
             }
+        }
+        else
+        {
+            sceneCamera = Camera.main;
+            if (sceneCamera != null)
+            {
+                Camera.main.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    /// <summary>
+    /// This is called when an object is diabled or destroyed.
+    /// </summary>
+    void OnDisable()
+    {
+        if (sceneCamera != null)
+        {
+            sceneCamera.gameObject.SetActive(true);
         }
     }
 }
