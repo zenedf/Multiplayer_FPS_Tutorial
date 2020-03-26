@@ -1,0 +1,1 @@
+*Anytime you see 'using UnityEngine.Networking' just replace it with 'using Mirror'
