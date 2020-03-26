@@ -553,10 +553,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4392184400005417976, guid: 3292f5cce5705754784dca07b59da224,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4392184400005417977, guid: 3292f5cce5705754784dca07b59da224,
         type: 3}
       propertyPath: m_Name
       value: SceneCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392184400005417977, guid: 3292f5cce5705754784dca07b59da224,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392184400005417982, guid: 3292f5cce5705754784dca07b59da224,
         type: 3}
@@ -713,7 +723,7 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8759339133195571357, guid: 98cddc4b116625c409d25164b64848be,
+  playerPrefab: {fileID: 918970330124879301, guid: 9e820131f5132364f8ea50471e2a8552,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
