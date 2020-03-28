@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using Mirror;
 
+/// <summary>
+/// TODO
+/// </summary>
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField] Behaviour[] componentsToDisable;
+
+    [SerializeField] string remoteLayerName = "RemotePlayer";
 
     Camera sceneCamera;
 
@@ -13,10 +18,8 @@ public class PlayerSetup : NetworkBehaviour
         if (!isLocalPlayer)
         {
             // if this object isn't controlled by the system, disable all the components.
-            for (int i = 0; i < componentsToDisable.Length; i++)
-            {
-                componentsToDisable[i].enabled = false;
-            }
+            DisableComponents();
+            AssignRemoteLayer();
         }
         else
         {
@@ -25,6 +28,39 @@ public class PlayerSetup : NetworkBehaviour
             {
                 Camera.main.gameObject.SetActive(false);
             }
+        }
+
+        RegisterPlayer();
+
+    }
+
+    /// <summary>
+    /// Assigning a player a unique ID, and therefore registering him in the scene.
+    /// </summary>
+    void RegisterPlayer()
+    {
+        string _ID = "Player " + GetComponent<NetworkIdentity>().netId;
+        transform.name = _ID;
+    }
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    void AssignRemoteLayer()
+    {
+        gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+    }
+
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    void DisableComponents()
+    {
+        
+        for (int i = 0; i < componentsToDisable.Length; i++)
+        {
+            componentsToDisable[i].enabled = false;
         }
     }
 
