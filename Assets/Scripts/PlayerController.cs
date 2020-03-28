@@ -3,13 +3,23 @@
 /// <summary>
 /// TODO
 /// </summary>
+[RequireComponent(typeof(ConfigurableJoint))]
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float lookSensitivity = 3f;
 
+    [SerializeField] private float thrusterForce = 1000f;
+
+    [Header("Spring settings")]
+    [SerializeField] private JointProjectionMode jointMode = JointProjectionMode.PositionAndRotation;
+    [SerializeField] private float jointSpring = 20f;
+    [SerializeField] private float jointMaxForce = 40f;
+
+
     private PlayerMotor motor;
+    private ConfigurableJoint joint;
 
     /// <summary>
     /// TODO
@@ -17,6 +27,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         motor = GetComponent<PlayerMotor>();
+        joint = GetComponent<ConfigurableJoint>();
+
+        SetJointSettings(jointSpring);
     }
 
     /// <summary>
@@ -52,10 +65,39 @@ public class PlayerController : MonoBehaviour
         // Calculate camera rotation as a 3D vector
         float _xRotation = Input.GetAxisRaw("Mouse Y"); 
                                                         
-        Vector3 _cameraRotation = new Vector3(_xRotation, 0f, 0f) * lookSensitivity;
+        float _cameraRotationX = _xRotation * lookSensitivity;
 
         // Apply rotation
-        motor.RotateCamera(_cameraRotation);
+        motor.RotateCamera(_cameraRotationX);
 
+
+        // Calculate the thruster force based on player input
+        Vector3 _thrusterForce = Vector3.zero; // Unless you press the jump button, the thruster force will be zero
+        if (Input.GetButton("Jump"))
+        {
+            _thrusterForce = Vector3.up * thrusterForce;
+            SetJointSettings(0f);
+        }
+        else
+        {
+            SetJointSettings(jointSpring);
+        }
+
+        // Apply the thruster force
+        motor.ApplyThruster(_thrusterForce);
+
+    }
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    /// <param name="_jointSpring"></param>
+    private void SetJointSettings(float _jointSpring)
+    {
+        joint.yDrive = new JointDrive
+        {
+            positionSpring = jointSpring,
+            maximumForce = jointMaxForce
+        };
     }
 }

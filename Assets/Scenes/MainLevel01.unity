@@ -264,6 +264,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 14117dd3b10fd6b4b99001a6526a4430, type: 2}
+    - target: {fileID: 64906833503721998, guid: db58b1eda8133c84983d20108c13888e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db58b1eda8133c84983d20108c13888e, type: 3}
 --- !u!4 &233656031 stripped
@@ -458,7 +463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731302090}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 5}
+  m_LocalPosition: {x: 0, y: 2, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1346870920}
@@ -551,6 +556,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 735438256}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1177474168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1078868141710040, guid: db58b1eda8133c84983d20108c13888e,
+    type: 3}
+  m_PrefabInstance: {fileID: 233656030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1177474172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177474168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9999995, y: 0.1000002, z: 4.9999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1276326782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,7 +752,7 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 918970330124879301, guid: 9e820131f5132364f8ea50471e2a8552,
+  playerPrefab: {fileID: 6101739070027169748, guid: 57cb189b33148474ab564625e70c4200,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
@@ -773,7 +797,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601110953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalPosition: {x: 0, y: 2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1346870920}
