@@ -25,18 +25,19 @@ public class PlayerController : MonoBehaviour
 
 
     private PlayerMotor motor;
-    private ConfigurableJoint joint;
+    //private ConfigurableJoint joint;
 
     /// <summary>
     /// TODO
     /// </summary>
     void Start()
     {
-        // No checking or error handling needed thanks to the  [Requred  ]
+        // No checking or error handling needed thanks to the '[RequireComponent(typeof(PlayerMotor))]'
+        // We know that there is going to be a PlayerMotor on this game object.
         motor = GetComponent<PlayerMotor>();
-        joint = GetComponent<ConfigurableJoint>();
+        //joint = GetComponent<ConfigurableJoint>();
 
-        SetJointSettings(jointSpring);
+        //SetJointSettings(jointSpring);
     }
 
     /// <summary>
@@ -80,19 +81,19 @@ public class PlayerController : MonoBehaviour
 
 
         // Calculate the thruster force based on player input
-        Vector3 _thrusterForce = Vector3.zero; // Unless you press the jump button, the thruster force will be zero
-        if (Input.GetButton("Jump"))
-        {
-            _thrusterForce = Vector3.up * thrusterForce;
-            SetJointSettings(0f);
-        }
-        else
-        {
-            SetJointSettings(jointSpring);
-        }
+        //Vector3 _thrusterForce = Vector3.zero; // Unless you press the jump button, the thruster force will be zero
+        //if (Input.GetButton("Jump"))
+        //{
+        //    _thrusterForce = Vector3.up * thrusterForce;
+        //    SetJointSettings(0f);
+        //}
+        //else
+        //{
+        //    SetJointSettings(jointSpring);
+        //}
 
-        // Apply the thruster force
-        motor.ApplyThruster(_thrusterForce);
+        //// Apply the thruster force
+        //motor.ApplyThruster(_thrusterForce);
 
     }
 
@@ -100,12 +101,12 @@ public class PlayerController : MonoBehaviour
     /// TODO
     /// </summary>
     /// <param name="_jointSpring"></param>
-    private void SetJointSettings(float _jointSpring)
-    {
-        joint.yDrive = new JointDrive
-        {
-            positionSpring = _jointSpring,
-            maximumForce = jointMaxForce
-        };
-    }
+    //private void SetJointSettings(float _jointSpring)
+    //{
+    //    joint.yDrive = new JointDrive
+    //    {
+    //        positionSpring = _jointSpring,
+    //        maximumForce = jointMaxForce
+    //    };
+    //}
 }
