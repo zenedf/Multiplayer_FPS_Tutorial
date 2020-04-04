@@ -20,15 +20,16 @@ public class PlayerSetup : NetworkBehaviour
         {
             // if this object isn't controlled by the system, disable all the components.
             DisableComponents();
-            AssignRemoteLayer();
+            //AssignRemoteLayer();
         }
         else
         {
+            //Camera.main.gameObject.SetActive(false);
+
             sceneCamera = Camera.main;
             if (sceneCamera != null)
             {
                 sceneCamera.gameObject.SetActive(false);
-                //Camera.main.gameObject.SetActive(false);
             }
         }
 
@@ -77,6 +78,6 @@ public class PlayerSetup : NetworkBehaviour
             sceneCamera.gameObject.SetActive(true);
         }
 
-        GameManager.UnRegisterPlayer(transform.name);
+        //GameManager.UnRegisterPlayer(transform.name);
     }
 }
