@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-
     private const string PLAYER_ID_PREFIX = "Player ";
 
     // <key of type string(ID???), value of type Player>
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
-
 
     /// <summary>
     /// TODO
